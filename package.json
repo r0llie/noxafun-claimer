@@ -1,0 +1,23 @@
+{
+  "name": "noxafunclaimer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "claim": "node src/claim.js",
+    "claim:dry": "node src/claim.js --dry-run",
+    "claim:send": "node src/claim.js --send",
+    "tokens": "node src/tokens.js",
+    "discover": "node src/discover.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.4"
+  },
+  "devDependencies": {
+    "vite": "^8.1.4"
+  }
+}
