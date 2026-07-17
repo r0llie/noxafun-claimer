@@ -54,7 +54,7 @@ function escapeHtml(value) {
 
 function shortAddress(address) {
   if (!address) return "Not connected";
-  return `${address.slice(0, 6)}…${address.slice(-4)}`;
+  return `${address.slice(0, 6)}...${address.slice(-4)}`;
 }
 
 function tokenInitials(token) {
@@ -63,7 +63,7 @@ function tokenInitials(token) {
 
 function formatEth(value, digits = 4) {
   const number = Number(value || 0);
-  if (!Number.isFinite(number)) return "—";
+  if (!Number.isFinite(number)) return "-";
   return number.toLocaleString("en-US", {
     minimumFractionDigits: digits,
     maximumFractionDigits: digits
@@ -460,11 +460,11 @@ function renderTokenRow(token) {
       <div class="token-monogram" aria-hidden="true">${tokenInitials(token)}</div>
       <div class="token-identity">
         <strong>${escapeHtml(token.name || token.symbol || "Unnamed token")}</strong>
-        <span>${escapeHtml(token.symbol || "TOKEN")} · ${shortAddress(token.address)}</span>
+        <span>${escapeHtml(token.symbol || "TOKEN")} / ${shortAddress(token.address)}</span>
       </div>
       <div class="token-value">
         <strong>${amount}</strong>
-        <span>${isReady ? "Ready to claim" : token.status === "claimed" ? "Claimed" : isPending ? "Checking…" : "Needs attention"}</span>
+        <span>${isReady ? "Ready to claim" : token.status === "claimed" ? "Claimed" : isPending ? "Checking..." : "Needs attention"}</span>
       </div>
       ${
         token.status === "bad"
@@ -527,7 +527,7 @@ function renderReviewRail(s) {
       <dl class="queue-facts">
         <div><dt>${icon("stack")} Selected tokens</dt><dd>${confirmations} of ${s.ready.length}</dd></div>
         <div><dt>${icon("shield-check")} Wallet confirmations</dt><dd>${confirmations}</dd></div>
-        <div><dt>${icon("clock")} Estimated time</dt><dd>${minutes ? `${minutes}–${minutes + 1} min` : "—"}</dd></div>
+        <div><dt>${icon("clock")} Estimated time</dt><dd>${minutes ? `${minutes}-${minutes + 1} min` : "-"}</dd></div>
       </dl>
 
       ${
@@ -569,7 +569,7 @@ function renderWorkspace() {
       <main class="loading-state" aria-live="polite">
         <div class="loading-icon">${icon(state.phase === "connecting" ? "wallet" : "magnifying-glass", "bold")}</div>
         <p class="eyebrow">${state.phase === "connecting" ? "Wallet connection" : "Automatic discovery"}</p>
-        <h2>${state.phase === "connecting" ? "Connecting securely…" : "Finding and checking your tokens…"}</h2>
+        <h2>${state.phase === "connecting" ? "Connecting securely..." : "Finding and checking your tokens..."}</h2>
         <p>${state.tokens.length ? `${checked} of ${state.tokens.length} tokens checked` : "This usually takes less than a minute."}</p>
         <div class="scan-line"><span></span></div>
       </main>`;
@@ -630,7 +630,7 @@ function renderDisconnected() {
       <div class="onboarding-icon">${icon("wallet", "bold")}</div>
       <p class="eyebrow">Creator fee recovery</p>
       <h1>Claim every eligible creator fee, without the busywork.</h1>
-      <p>Connect your wallet once. We’ll discover your tokens, simulate every claim, and build a safe queue automatically.</p>
+      <p>Connect your wallet once. We'll discover your tokens, simulate every claim, and build a safe queue automatically.</p>
       ${renderNotice()}
       <div class="onboarding-actions">
         <button class="primary-button large" data-action="connect" ${state.busy ? "disabled" : ""}>${icon("wallet", "bold")} Connect wallet</button>
@@ -655,7 +655,7 @@ function renderDialog() {
           <h2 id="creator-title">View another creator</h2>
           <p>Enter a creator address to discover its tokens. Claims stay disabled unless it matches your connected wallet.</p>
           <label for="creatorInput">Creator address</label>
-          <input id="creatorInput" placeholder="0x…" value="${escapeHtml(state.accountInput)}" spellcheck="false" autocomplete="off" />
+          <input id="creatorInput" placeholder="0x..." value="${escapeHtml(state.accountInput)}" spellcheck="false" autocomplete="off" />
           <div class="modal-actions">
             <button class="text-button" data-action="close-dialog">Cancel</button>
             <button class="primary-button" data-action="load-creator">${icon("magnifying-glass")} Discover tokens</button>
