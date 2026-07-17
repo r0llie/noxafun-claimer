@@ -6,4 +6,6 @@ dist/
 .env
 .env.*
 *.log
+audit-output/
+verify-output/
 *.tar.gz

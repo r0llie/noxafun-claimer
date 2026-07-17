@@ -7,3 +7,5 @@ dist/
 .openai/
 *.tar.gz
 *.log
+audit-output/
+verify-output/
